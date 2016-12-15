@@ -1,3 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %FRAME
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%FE variable1 created at 23:15:21 on 15/12/2016
+fuzzy_variable variable1 ;
+   ranges from 0 to  100 ; 
+   fuzzy_set fuzzy_set1 is /\ shaped and linear at 33, 50, 67 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
