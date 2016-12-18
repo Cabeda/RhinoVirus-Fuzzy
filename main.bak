@@ -65,4 +65,5 @@ relation get_risk(TempMin, TempMax, Risk)
   	if reset all fuzzy values
   	and fuzzify the tempMin from TempMin
   	and fuzzify the tempMax from TempMax
-  	and propagate risk_value fuzzy rules.
+  	and propagate risk_value fuzzy rules
+	and Risk is risk_value.
