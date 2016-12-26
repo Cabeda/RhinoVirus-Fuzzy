@@ -31,18 +31,121 @@ fuzzy_variable tempMin ;
        and mirror rule
        and shrinking . 
 
+%FE tempMax edited at 15:27:53 on 26/12/2016
 fuzzy_variable tempMax ;
-   ranges from 0 to  100 ; 
-   fuzzy_set verde_tMax is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set amarelo_tMax is /\ shaped and linear at 0, 5, 10 ; 
-   fuzzy_set laranja_tMax is /\ shaped and linear at 4, 9, 15 ; 
-   fuzzy_set vermelho_tMax is / shaped and linear at 10, 15 ; 
+   ranges from 10 to  30 ; 
+   fuzzy_set verde_tMax is \ shaped and linear at 10, 15 ; 
+   fuzzy_set amarelo_tMax is /\ shaped and linear at 13, 15, 20 ; 
+   fuzzy_set laranja_tMax is /\ shaped and linear at 15, 20, 25 ; 
+   fuzzy_set vermelho_tMax is / shaped and linear at 20, 30 ; 
    defuzzify using 
       all memberships
        and mirror rule
        and shrinking . 
 
-%FE color edited at 11:36:51 on 26/12/2016
+%FE chuvaTotal created at 15:38:21 on 26/12/2016
+fuzzy_variable chuvaTotal ;
+   ranges from 0 to  300 ; 
+   fuzzy_set verde_chuvaTotal is \ shaped and linear at 0, 100 ; 
+   fuzzy_set amarelo_chuvaTotal is /\ shaped and linear at 50, 125, 200 ; 
+   fuzzy_set laranja_chuvaTotal is /\ shaped and linear at 150, 225, 300 ; 
+   fuzzy_set vermelho_chuvaTotal is / shaped and linear at 200, 300 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+%FE chuvaMax created at 15:43:57 on 26/12/2016
+fuzzy_variable chuvaMax ;
+   ranges from 0 to  100 ; 
+   fuzzy_set verde_chuvaMax is \ shaped and linear at 20, 40 ; 
+   fuzzy_set amarelo_chuvaMax is /\ shaped and linear at 20, 40, 60 ; 
+   fuzzy_set laranja_chuvaMax is /\ shaped and linear at 40, 60, 80 ; 
+   fuzzy_set vermelho_chuvaMax is / shaped and linear at 60, 80 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+%FE p10 edited at 15:50:25 on 26/12/2016
+fuzzy_variable p10 ;
+   ranges from 20 to  40 ; 
+   fuzzy_set verde_p10 is / shaped and linear at 30, 35 ; 
+   fuzzy_set amarelo_p10 is /\ shaped and linear at 24, 27, 30 ; 
+   fuzzy_set laranja_p10 is /\ shaped and linear at 20, 24, 27 ; 
+   fuzzy_set vermelho_p10 is \ shaped and linear at 20, 24 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+%FE no created at 15:54:50 on 26/12/2016
+fuzzy_variable no ;
+   ranges from 10 to  50 ; 
+   fuzzy_set verde_no is \ shaped and linear at 18, 24 ; 
+   fuzzy_set amarelo_no is /\ shaped and linear at 20, 30, 37 ; 
+   fuzzy_set laranja_no is /\ shaped and linear at 29, 35, 40 ; 
+   fuzzy_set vermelho_no is / shaped and linear at 40, 45 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+
+
+%FE no2 created at 16:3:29 on 26/12/2016
+fuzzy_variable no2 ;
+   ranges from 40 to  60 ; 
+   fuzzy_set verde_no2 is \ shaped and linear at 40, 45 ; 
+   fuzzy_set amarelo_no2 is /\ shaped and linear at 43, 47, 53 ; 
+   fuzzy_set laranja_no2 is /\ shaped and linear at 47, 52, 57 ; 
+   fuzzy_set vermelho_no2 is / shaped and linear at 55, 60 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+%FE nox created at 16:3:29 on 26/12/2016
+fuzzy_variable nox ;
+   ranges from 0 to  100 ; 
+   fuzzy_set verde_nox is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set amarelo_nox is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set laranja_nox is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set vermelho_nox is /\ shaped and linear at 33, 50, 67 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+%FE so2 created at 16:3:29 on 26/12/2016
+fuzzy_variable so2 ;
+   ranges from 0 to  100 ; 
+   fuzzy_set verde_so2 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set amarelo_so2 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set laranja_so2 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set vermelho_so2 is /\ shaped and linear at 33, 50, 67 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+%FE co created at 16:3:29 on 26/12/2016
+fuzzy_variable co ;
+   ranges from 0 to  100 ; 
+   fuzzy_set verde_co is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set amarelo_o3 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set laranja_o3 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set vermelho_o3 is /\ shaped and linear at 33, 50, 67 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+%FE 03 created at 16:3:29 on 26/12/2016
+fuzzy_variable '03' ;
+   ranges from 0 to  100 ; 
+   fuzzy_set verde_o3 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set amarelo_o3 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set laranja_o3 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set vermelho_03 is /\ shaped and linear at 33, 50, 67 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking .
+
+
 fuzzy_variable color ;
    ranges from 0 to  25 ; 
    fuzzy_set verde is \ shaped and linear at 0, 7 ; 
@@ -59,7 +162,7 @@ fuzzy_variable color ;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 fuzzy_matrix risk_value
-	tempMin		*  tempMax		->  risk	; 
+	tempMin		*  tempMax		->  color	; 
    	verde_tMin   	*  verde_tMax    	->  verde  	;
    	verde_tMin   	*  amarelo_tMax	->  verde  	;
    	verde_tMin   	*  laranja_tMax	->  amarelo	;
@@ -77,17 +180,17 @@ fuzzy_matrix risk_value
 	vermelho_tMin   	*  laranja_tMax	->  laranja	;
 	vermelho_tMin   	*  vermelho_tMax	->  vermelho.
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Propagação dos valores fuzzy  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %example: get_risk(12, 30, Risk).
 relation get_risk(TempMin, TempMax, Risk)
-  	if reset all fuzzy values
-  	and fuzzify the tempMin from TempMin
-  	and fuzzify the tempMax from TempMax
-  	and propagate risk_value fuzzy rules
-	and defuzzify the risk to Risk.
+if reset all fuzzy values
+and fuzzify the tempMin from TempMin
+and fuzzify the tempMax from TempMax
+and propagate risk_value fuzzy rules
+and defuzzify the color to Risk.
+
+ 
  
