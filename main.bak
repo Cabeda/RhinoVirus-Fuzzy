@@ -1,13 +1,10 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Frame
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuzzy Variables
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%FE tempMin edited at 16:50:52 on 18/12/2016
 fuzzy_variable tempMin ;
    ranges from -5 to  15 ; 
    fuzzy_set verde_tMin is \ shaped and linear at -5, 0 ; 
@@ -19,25 +16,35 @@ fuzzy_variable tempMin ;
        and mirror rule
        and shrinking . 
 
-.%FE tempMax created at 16:57:45 on 18/12/2016
 fuzzy_variable tempMax ;
    ranges from 0 to  100 ; 
    fuzzy_set verde_tMax is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set amarelo_tMax is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set laranja_tMax is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set vermelho_tMax is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set amarelo_tMax is /\ shaped and linear at 0, 5, 10 ; 
+   fuzzy_set laranja_tMax is /\ shaped and linear at 4, 9, 15 ; 
+   fuzzy_set vermelho_tMax is / shaped and linear at 10, 15 ; 
    defuzzify using 
       all memberships
        and mirror rule
        and shrinking . 
 
+%FE color edited at 11:36:51 on 26/12/2016
+fuzzy_variable color ;
+   ranges from 0 to  25 ; 
+   fuzzy_set verde is \ shaped and linear at 0, 7 ; 
+   fuzzy_set vermelho is / shaped and linear at 15, 20 ; 
+   fuzzy_set amarelo is /\ shaped and linear at 5, 10, 15 ; 
+   fuzzy_set laranja is /\ shaped and linear at 10, 15, 20 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking .
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Matriz de regras
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fuzzy_matrix risk_value 
-   	tempMin  		*  tempMax   	->  risk	;
+fuzzy_matrix risk_value
+	tempMin		*  tempMax		->  risk	; 
    	verde_tMin   	*  verde_tMax    	->  verde  	;
    	verde_tMin   	*  amarelo_tMax	->  verde  	;
    	verde_tMin   	*  laranja_tMax	->  amarelo	;
@@ -61,9 +68,11 @@ fuzzy_matrix risk_value
 % Propagação dos valores fuzzy  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%example: get_risk(12, 30, Risk).
 relation get_risk(TempMin, TempMax, Risk)
   	if reset all fuzzy values
   	and fuzzify the tempMin from TempMin
   	and fuzzify the tempMax from TempMax
   	and propagate risk_value fuzzy rules
-	and Risk is risk_value.
+	and defuzzify the risk to Risk.
+ 
