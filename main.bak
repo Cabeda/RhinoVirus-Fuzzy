@@ -2,7 +2,7 @@
 % Frame
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-frame risk
+frame risk ;
 default tempMin is 0
 and default tempMax is 0
 and default chuvaTotal is 0
@@ -250,7 +250,7 @@ fuzzy_matrix chuvaTotal_rules
 % Propagação dos valores fuzzy  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%example: get_risk(12, 30, 20, 1, 1, 1,  1, 1, 1, 1, Risk).
+%example: get_risk(12, 30, 20, 1, 1, 1,  30, 30, 1, 1, Risk).
 relation get_risk(TempMin, TempMax, O3, Co, So2, Nox,  No, P10, ChuvaMax, ChuvaTotal,  Risk)
 if reset all fuzzy values
 and fuzzify the tempMin from TempMin
@@ -271,5 +271,96 @@ and propagate { tempMin_rules, tempMax_rules, o3_rules,
 } fuzzy rules
 and defuzzify the color to Risk.
 
- 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ACTIONS  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% O programa é iniciado por esta ação
+action run
+   	do  restart
+	and ask_for_variables
+    	and get_risk(12, 30, 20, 1, 1, 1,  30, 30, 1, 1, Risk)
+   	and write(Risk).
+
+action ask_for_variables
+   	do ask risk_questions
+	and Risk is a new risk
+	and the tempMin of Risk becomes ask_TempMin
+	and the tempMax of Risk becomes ask_TempMax
+	and the o3 of Risk becomes ask_O3
+	and the co of Risk becomes ask_Co
+	and the so2 of Risk becomes ask_So2
+	and the nox of Risk becomes ask_Nox
+	and the no of Risk becomes ask_No
+	and the p10 of Risk becomes ask_P10
+	and the chuvaMax of Risk becomes ask_ChuvaMax
+	and the chuvaTotal of Risk becomes ask_ChuvaTotal.
+
+action checkValue( Risk)
+   	do  check that Risk is a  risk
+   	and check that the tempMin of Risk is TempMin
+   	and check that the tempMax of Risk is TempMax
+   	and check that the o3 of Risk is O3
+   	and check that the co of Risk is Co
+   	and check that the nox  of Risk is  Nox
+	and check that the so2 of Risk is  So2
+   	and check that the no of Risk is No
+   	and check that the p10 of Risk is P10
+   	and check that the chuvaMax of Risk is ChuvaMax
+   	and check that the chuvaTotal of Risk is ChuvaTotal
+   	and get_risk(( TempMin, TempMax, O3, Co, So2, Nox,  No, P10, ChuvaMax, ChuvaTotal,  Risk ) .
+
+do ensure_loaded( system( flint ) ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GROUP 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+group risk_questions
+	ask_TempMin, ask_TempMax, ask_O3, ask_Co, ask_So2, ask_Nox,  ask_No, ask_P10, ask_ChuvaMax, ask_ChuvaTotal.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% QUESTIONS  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+question ask_TempMin
+'Qual a temperatura mínima do mês?' ;
+input number.
+
+question ask_TempMax
+'Qual a temperatura máxima do mês?' ;
+input number.
+
+question ask_O3
+'Qual o nível de O3 do mês?' ;
+input number.
+
+question ask_Co
+'Qual o nível de CO do mês?' ;
+input number.
+
+question ask_So2
+'Qual o nível de SO2 do mês?' ;
+input number.
+
+question ask_Nox
+'Qual o nível de NOX do mês?' ;
+input number.
+
+question ask_No
+'Qual o nível de NO do mês?' ;
+input number.
+
+question ask_P10
+'Qual o nível de P10 do mês?' ;
+input number.
+
+question ask_ChuvaMax
+'Qual o nível de Chuva máxima do mês?' ;
+input number.
+
+question ask_ChuvaTotal
+'Qual o nível de Chuva Totals do mês?' ;
+input number.
  
