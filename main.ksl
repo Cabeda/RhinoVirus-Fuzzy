@@ -12,7 +12,7 @@ and default no is 0
 and default no2 is 0
 and default nox is 0
 and default so2 is 0
-and default co2 is 0
+and default co is 0
 and default o3 is 0.
 
 
@@ -31,7 +31,6 @@ fuzzy_variable tempMin ;
        and mirror rule
        and shrinking . 
 
-%FE tempMax edited at 15:27:53 on 26/12/2016
 fuzzy_variable tempMax ;
    ranges from 10 to  30 ; 
    fuzzy_set verde_tMax is \ shaped and linear at 10, 15 ; 
@@ -43,7 +42,6 @@ fuzzy_variable tempMax ;
        and mirror rule
        and shrinking . 
 
-%FE chuvaTotal created at 15:38:21 on 26/12/2016
 fuzzy_variable chuvaTotal ;
    ranges from 0 to  300 ; 
    fuzzy_set verde_chuvaTotal is \ shaped and linear at 0, 100 ; 
@@ -54,7 +52,7 @@ fuzzy_variable chuvaTotal ;
       all memberships
        and mirror rule
        and shrinking . 
-%FE chuvaMax created at 15:43:57 on 26/12/2016
+
 fuzzy_variable chuvaMax ;
    ranges from 0 to  100 ; 
    fuzzy_set verde_chuvaMax is \ shaped and linear at 20, 40 ; 
@@ -65,7 +63,7 @@ fuzzy_variable chuvaMax ;
       all memberships
        and mirror rule
        and shrinking . 
-%FE p10 edited at 15:50:25 on 26/12/2016
+
 fuzzy_variable p10 ;
    ranges from 20 to  40 ; 
    fuzzy_set verde_p10 is / shaped and linear at 30, 35 ; 
@@ -76,7 +74,7 @@ fuzzy_variable p10 ;
       all memberships
        and mirror rule
        and shrinking . 
-%FE no created at 15:54:50 on 26/12/2016
+
 fuzzy_variable no ;
    ranges from 10 to  50 ; 
    fuzzy_set verde_no is \ shaped and linear at 18, 24 ; 
@@ -89,7 +87,6 @@ fuzzy_variable no ;
        and shrinking . 
 
 
-%FE no2 created at 16:3:29 on 26/12/2016
 fuzzy_variable no2 ;
    ranges from 40 to  60 ; 
    fuzzy_set verde_no2 is \ shaped and linear at 40, 45 ; 
@@ -100,7 +97,7 @@ fuzzy_variable no2 ;
       all memberships
        and mirror rule
        and shrinking . 
-%FE nox created at 16:3:29 on 26/12/2016
+
 fuzzy_variable nox ;
    ranges from 0 to  100 ; 
    fuzzy_set verde_nox is /\ shaped and linear at 33, 50, 67 ; 
@@ -111,7 +108,7 @@ fuzzy_variable nox ;
       all memberships
        and mirror rule
        and shrinking . 
-%FE so2 created at 16:3:29 on 26/12/2016
+
 fuzzy_variable so2 ;
    ranges from 0 to  100 ; 
    fuzzy_set verde_so2 is /\ shaped and linear at 33, 50, 67 ; 
@@ -122,24 +119,24 @@ fuzzy_variable so2 ;
       all memberships
        and mirror rule
        and shrinking . 
-%FE co created at 16:3:29 on 26/12/2016
+
 fuzzy_variable co ;
    ranges from 0 to  100 ; 
    fuzzy_set verde_co is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set amarelo_o3 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set laranja_o3 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set vermelho_o3 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set amarelo_co is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set laranja_co is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set vermelho_co is /\ shaped and linear at 33, 50, 67 ; 
    defuzzify using 
       all memberships
        and mirror rule
        and shrinking . 
-%FE 03 created at 16:3:29 on 26/12/2016
-fuzzy_variable '03' ;
+
+fuzzy_variable o3 ;
    ranges from 0 to  100 ; 
    fuzzy_set verde_o3 is /\ shaped and linear at 33, 50, 67 ; 
    fuzzy_set amarelo_o3 is /\ shaped and linear at 33, 50, 67 ; 
    fuzzy_set laranja_o3 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set vermelho_03 is /\ shaped and linear at 33, 50, 67 ; 
+   fuzzy_set vermelho_o3 is /\ shaped and linear at 33, 50, 67 ; 
    defuzzify using 
       all memberships
        and mirror rule
@@ -161,35 +158,117 @@ fuzzy_variable color ;
 % Matriz de regras
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fuzzy_matrix risk_value
-	tempMin		*  tempMax		->  color	; 
-   	verde_tMin   	*  verde_tMax    	->  verde  	;
-   	verde_tMin   	*  amarelo_tMax	->  verde  	;
-   	verde_tMin   	*  laranja_tMax	->  amarelo	;
-   	verde_tMin   	*  vermelho_tMax	->  laranja	;
-   	amarelo_tMin   	*  verde_tMax	->  verde	;
-	amarelo_tMin   	*  amarelo_tMax	->  amarelo	;
-	amarelo_tMin   	*  laranja_tMax	->  amarelo	;
-	amarelo_tMin   	*  vermelho_tMax	->  laranja	;  
-   	laranja_tMin   	*  verde_tMax	->  amarelo	;
-	laranja_tMin   	*  amarelo_tMax	->  amarelo	;
-	laranja_tMin   	*  laranja_tMax	->  laranja	;
-	laranja_tMin   	*  vermelho_tMax	->  laranja	;
-   	vermelho_tMin   	*  verde_tMax	->  amarelo	;
-	vermelho_tMin   	*  amarelo_tMax	->  laranja	;
-	vermelho_tMin   	*  laranja_tMax	->  laranja	;
-	vermelho_tMin   	*  vermelho_tMax	->  vermelho.
+fuzzy_matrix tempMax_rules
+	tempMax			->  color	;
+
+	verde_tMax			->  verde	;
+	amarelo_tMax		->  amarelo	;
+	laranja_tMax		->  laranja	;
+	vermelho_tMax		->  vermelho.
+
+
+fuzzy_matrix tempMin_rules
+	tempMin 			->  color	;
+
+	verde_tMin   		->  verde	;
+	amarelo_tMin   		->  amarelo	;
+	laranja_tMin   		->  laranja	;
+	vermelho_tMin   		->  vermelho.
+
+fuzzy_matrix o3_rules
+	o3				-> color	;
+
+	verde_o3			->  verde	;
+	amarelo_o3			->  amarelo	;
+	laranja_o3			->  laranja	;
+	vermelho_o3			->  vermelho.
+
+fuzzy_matrix co_rules
+	co				-> color	;
+	verde_co			->  verde	;
+	amarelo_co			->  amarelo	;
+	laranja_co			->  laranja	;
+	vermelho_co			->  vermelho.
+
+fuzzy_matrix so2_rules
+	so2				->  color	;
+
+	verde_so2			->  verde	;
+	amarelo_so2			->  amarelo	;
+	laranja_so2			->  laranja	;
+	vermelho_so2		->  vermelho.
+
+fuzzy_matrix nox_rules
+	nox				->  color	;
+
+	verde_nox			->  verde	;
+	amarelo_nox			->  amarelo	;
+	laranja_nox			->  laranja	;
+	vermelho_nox		->  vermelho.
+
+fuzzy_matrix no2_rules
+	no2				->  color	;
+
+	verde_no2			->  verde	;
+	amarelo_no2			->  amarelo	;
+	laranja_no2			->  laranja	;
+	vermelho_no2 		->  vermelho.
+
+fuzzy_matrix no_rules
+	no				->  color	;
+
+	verde_no			->  verde	;
+	amarelo_no			->  amarelo	;
+	laranja_no			->  laranja	;
+	vermelho_no			->  vermelho.
+
+fuzzy_matrix p10_rules
+	p10				->  color	;
+
+	verde_p10			->  verde	;
+	amarelo_p10			->  amarelo	;
+	laranja_p10			->  laranja	;
+	vermelho_p10		->  vermelho.
+
+fuzzy_matrix chuvaMax_rules
+	chuvaMax			->  color	;
+
+	verde_chuvaMax		->  verde	;
+	amarelo_chuvaMax		->  amarelo	;
+	laranja_chuvaMax		->  laranja	;
+	vermelho_chuvaMax		->  vermelho.
+
+fuzzy_matrix chuvaTotal_rules
+	chuvaTotal			->  color	;
+
+	verde_chuvaTotal		->  verde	;
+	amarelo_chuvaTotal	->  amarelo	;
+	laranja_chuvaTotal	->  laranja	;
+	vermelho_chuvaTotal	->  vermelho.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Propagação dos valores fuzzy  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%example: get_risk(12, 30, Risk).
-relation get_risk(TempMin, TempMax, Risk)
+%example: get_risk(12, 30, 20, 1, 1, 1,  30, 30, 1, 1, Risk).
+relation get_risk(TempMin, TempMax, O3, Co, So2, Nox,  No, P10, ChuvaMax, ChuvaTotal,  Risk)
 if reset all fuzzy values
 and fuzzify the tempMin from TempMin
 and fuzzify the tempMax from TempMax
-and propagate risk_value fuzzy rules
+and fuzzify the o3 from O3
+and fuzzify the co from Co
+and fuzzify the so2 from So2
+and fuzzify the nox from Nox
+and fuzzify the no from No
+and fuzzify the p10 from P10
+and fuzzify the chuvaMax from ChuvaMax
+and fuzzify the chuvaTotal from ChuvaTotal
+and propagate { tempMin_rules, tempMax_rules, o3_rules, 
+			co_rules, so2_rules, nox_rules, 
+			no_rules,
+ 			p10_rules,
+			 chuvaMax_rules, chuvaTotal_rules
+} fuzzy rules
 and defuzzify the color to Risk.
 
  
