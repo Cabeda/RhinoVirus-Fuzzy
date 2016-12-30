@@ -3,144 +3,84 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 frame risk ;
-default tempMin is 0
-and default tempMax is 0
+default tempMax is 0
+and default tempMin is 0
+and default tempMaxMedia is 0
+and default tempMinMedia is 0
 and default chuvaTotal is 0
-and default chuvaMax is 0
 and default p10 is 0
 and default no is 0
-and default no2 is 0
 and default nox is 0
 and default so2 is 0
-and default co is 0
-and default o3 is 0.
+and default co is 0.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuzzy Variables
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fuzzy_variable tempMin ;
-   ranges from -5 to  15 ; 
-   fuzzy_set verde_tMin is \ shaped and linear at -5, 0 ; 
-   fuzzy_set amarelo_tMin is /\ shaped and linear at 0, 5, 10 ; 
-   fuzzy_set laranja_tMin is /\ shaped and linear at 4, 9, 15 ; 
-   fuzzy_set vermelho_tMin is / shaped and linear at 10, 15 ; 
+%FE tempMax edited at 0:10:8 on 30/12/2016
+fuzzy_variable tempMax ;
+   ranges from 25 to  65 ; 
+   fuzzy_set verde_tMax is / shaped and linear at 51.8195729, 63.3313104 ; 
+   fuzzy_set amarelo_tMax is /\ shaped and linear at 38.66330147, 46.88597111, 55.10864076; 
+   fuzzy_set laranja_tMax is /\ shaped and linear at 30.44063, 38.66330147, 46.88597111 ; 
+   fuzzy_set vermelho_tMax is \ shaped and linear at 30.44063, 38.66330147 ; 
    defuzzify using 
       all memberships
        and mirror rule
        and shrinking . 
 
-fuzzy_variable tempMax ;
-   ranges from 10 to  30 ; 
-   fuzzy_set verde_tMax is \ shaped and linear at 10, 15 ; 
-   fuzzy_set amarelo_tMax is /\ shaped and linear at 13, 15, 20 ; 
-   fuzzy_set laranja_tMax is /\ shaped and linear at 15, 20, 25 ; 
-   fuzzy_set vermelho_tMax is / shaped and linear at 20, 30 ; 
+
+%FE tempMin edited at 22:44:15 on 29/12/2016
+fuzzy_variable tempMin ;
+   ranges from 5 to  30 ; 
+   fuzzy_set verde_tMin is / shaped and linear at 21.32659193, 28.61692865 ; 
+   fuzzy_set amarelo_tMin is /\ shaped and linear at 12.99477854, 18.20216191, 23.40954528 ; 
+   fuzzy_set laranja_tMin is /\ shaped and linear at 7.787395, 12.99477854, 18.20216191 ; 
+   fuzzy_set vermelho_tMin is \ shaped and linear at 7.787395, 12.99477854 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+
+%FE tempMax edited at 22:51:11 on 29/12/2016
+fuzzy_variable tempMaxMedia ;
+   ranges from 21 to  45 ; 
+   fuzzy_set verde_tMaxMedia is / shaped and linear at 36.02464195, 43.64567955 ; 
+   fuzzy_set amarelo_tMaxMedia is /\ shaped and linear at 27.31488469, 32.75848297, 38.20208126 ; 
+   fuzzy_set laranja_tMaxMedia is /\ shaped and linear at 21.87129, 27.31488469, 32.75848297 ; 
+   fuzzy_set vermelho_tMaxMedia is \ shaped and linear at 21.87129, 27.31488469 ; 
+   defuzzify using 
+      all memberships
+       and mirror rule
+       and shrinking . 
+
+
+%FE tempMin edited at 22:44:15 on 29/12/2016
+fuzzy_variable tempMinMedia ;
+   ranges from 10 to  35 ; 
+   fuzzy_set verde_tMinMedia is / shaped and linear at 25.11830667, 31.34467869 ; 
+   fuzzy_set amarelo_tMinMedia is /\ shaped and linear at 18.00245295, 22.44986153, 26.89727011 ; 
+   fuzzy_set laranja_tMinMedia is /\ shaped and linear at 13.55504, 18.00245295, 22.44986153 ; 
+   fuzzy_set vermelho_tMinMedia is \ shaped and linear at 13.55504, 18.00245295 ; 
    defuzzify using 
       all memberships
        and mirror rule
        and shrinking . 
 
 fuzzy_variable chuvaTotal ;
-   ranges from 0 to  300 ; 
-   fuzzy_set verde_chuvaTotal is \ shaped and linear at 0, 100 ; 
-   fuzzy_set amarelo_chuvaTotal is /\ shaped and linear at 50, 125, 200 ; 
-   fuzzy_set laranja_chuvaTotal is /\ shaped and linear at 150, 225, 300 ; 
-   fuzzy_set vermelho_chuvaTotal is / shaped and linear at 200, 300 ; 
+   ranges from -1000 to  100  ; 
+   fuzzy_set verde_chuvaTotal is \ shaped and linear at -988.6168827, -643.460834 ; 
+   fuzzy_set amarelo_chuvaTotal is /\ shaped and linear at -742.076848, -495.536814, -248.996779 ; 
+   fuzzy_set laranja_chuvaTotal is /\ shaped and linear at -495.536814, -248.996779, -2.45674 ; 
+   fuzzy_set vermelho_chuvaTotal is / shaped and linear at -248.996779, -2.45674 ; 
    defuzzify using 
       all memberships
        and mirror rule
-       and shrinking . 
-
-fuzzy_variable chuvaMax ;
-   ranges from 0 to  100 ; 
-   fuzzy_set verde_chuvaMax is \ shaped and linear at 20, 40 ; 
-   fuzzy_set amarelo_chuvaMax is /\ shaped and linear at 20, 40, 60 ; 
-   fuzzy_set laranja_chuvaMax is /\ shaped and linear at 40, 60, 80 ; 
-   fuzzy_set vermelho_chuvaMax is / shaped and linear at 60, 80 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
-
-fuzzy_variable p10 ;
-   ranges from 20 to  40 ; 
-   fuzzy_set verde_p10 is / shaped and linear at 30, 35 ; 
-   fuzzy_set amarelo_p10 is /\ shaped and linear at 24, 27, 30 ; 
-   fuzzy_set laranja_p10 is /\ shaped and linear at 20, 24, 27 ; 
-   fuzzy_set vermelho_p10 is \ shaped and linear at 20, 24 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
-
-fuzzy_variable no ;
-   ranges from 10 to  50 ; 
-   fuzzy_set verde_no is \ shaped and linear at 18, 24 ; 
-   fuzzy_set amarelo_no is /\ shaped and linear at 20, 30, 37 ; 
-   fuzzy_set laranja_no is /\ shaped and linear at 29, 35, 40 ; 
-   fuzzy_set vermelho_no is / shaped and linear at 40, 45 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
+       and shrinking .  
 
 
-fuzzy_variable no2 ;
-   ranges from 40 to  60 ; 
-   fuzzy_set verde_no2 is \ shaped and linear at 40, 45 ; 
-   fuzzy_set amarelo_no2 is /\ shaped and linear at 43, 47, 53 ; 
-   fuzzy_set laranja_no2 is /\ shaped and linear at 47, 52, 57 ; 
-   fuzzy_set vermelho_no2 is / shaped and linear at 55, 60 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
-
-fuzzy_variable nox ;
-   ranges from 0 to  100 ; 
-   fuzzy_set verde_nox is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set amarelo_nox is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set laranja_nox is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set vermelho_nox is /\ shaped and linear at 33, 50, 67 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
-
-fuzzy_variable so2 ;
-   ranges from 0 to  100 ; 
-   fuzzy_set verde_so2 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set amarelo_so2 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set laranja_so2 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set vermelho_so2 is /\ shaped and linear at 33, 50, 67 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
-
-fuzzy_variable co ;
-   ranges from 0 to  100 ; 
-   fuzzy_set verde_co is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set amarelo_co is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set laranja_co is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set vermelho_co is /\ shaped and linear at 33, 50, 67 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
-
-fuzzy_variable o3 ;
-   ranges from 0 to  100 ; 
-   fuzzy_set verde_o3 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set amarelo_o3 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set laranja_o3 is /\ shaped and linear at 33, 50, 67 ; 
-   fuzzy_set vermelho_o3 is /\ shaped and linear at 33, 50, 67 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking .
 
 
 fuzzy_variable color ;
@@ -175,68 +115,22 @@ fuzzy_matrix tempMin_rules
 	laranja_tMin   		->  laranja	;
 	vermelho_tMin   		->  vermelho.
 
-fuzzy_matrix o3_rules
-	o3				-> color	;
+fuzzy_matrix tempMaxMedia_rules
+	tempMaxMedia		->  color	;
 
-	verde_o3			->  verde	;
-	amarelo_o3			->  amarelo	;
-	laranja_o3			->  laranja	;
-	vermelho_o3			->  vermelho.
+	verde_tMaxMedia		->  verde	;
+	amarelo_tMaxMedia		->  amarelo	;
+	laranja_tMaxMedia		->  laranja	;
+	vermelho_tMaxMedia	->  vermelho.
 
-fuzzy_matrix co_rules
-	co				-> color	;
-	verde_co			->  verde	;
-	amarelo_co			->  amarelo	;
-	laranja_co			->  laranja	;
-	vermelho_co			->  vermelho.
 
-fuzzy_matrix so2_rules
-	so2				->  color	;
+fuzzy_matrix tempMinMedia_rules
+	tempMinMedia 		->  color	;
 
-	verde_so2			->  verde	;
-	amarelo_so2			->  amarelo	;
-	laranja_so2			->  laranja	;
-	vermelho_so2		->  vermelho.
-
-fuzzy_matrix nox_rules
-	nox				->  color	;
-
-	verde_nox			->  verde	;
-	amarelo_nox			->  amarelo	;
-	laranja_nox			->  laranja	;
-	vermelho_nox		->  vermelho.
-
-fuzzy_matrix no2_rules
-	no2				->  color	;
-
-	verde_no2			->  verde	;
-	amarelo_no2			->  amarelo	;
-	laranja_no2			->  laranja	;
-	vermelho_no2 		->  vermelho.
-
-fuzzy_matrix no_rules
-	no				->  color	;
-
-	verde_no			->  verde	;
-	amarelo_no			->  amarelo	;
-	laranja_no			->  laranja	;
-	vermelho_no			->  vermelho.
-
-fuzzy_matrix p10_rules
-	p10				->  color	;
-
-	verde_p10			->  verde	;
-	amarelo_p10			->  amarelo	;
-	laranja_p10			->  laranja	;
-	vermelho_p10		->  vermelho.
-
-fuzzy_matrix chuvaMax_rules
-	chuvaMax			->  color	;
-
-	verde_chuvaMax		->  verde	;
-	amarelo_chuvaMax		->  amarelo	;
-	laranja_chuvaMax		->  laranja	;
-	vermelho_chuvaMax		->  vermelho.
+	verde_tMinMedia   	->  verde	;
+	amarelo_tMinMedia   	->  amarelo	;
+	laranja_tMinMedia   	->  laranja	;
+	vermelho_tMinMedia   	->  vermelho.
 
 fuzzy_matrix chuvaTotal_rules
 	chuvaTotal			->  color	;
@@ -246,29 +140,66 @@ fuzzy_matrix chuvaTotal_rules
 	laranja_chuvaTotal	->  laranja	;
 	vermelho_chuvaTotal	->  vermelho.
 
+
+fuzzy_matrix p10_rules
+	p10				->  color	;
+
+	verde_p10			->  verde	;
+	amarelo_p10			->  amarelo	;
+	laranja_p10			->  laranja	;
+	vermelho_p10		->  vermelho.
+
+fuzzy_matrix no_rules
+	no				->  color	;
+
+	verde_no			->  verde	;
+	amarelo_no			->  amarelo	;
+	laranja_no			->  laranja	;
+	vermelho_no			->  vermelho.
+
+fuzzy_matrix nox_rules
+	nox				->  color	;
+
+	verde_nox			->  verde	;
+	amarelo_nox			->  amarelo	;
+	laranja_nox			->  laranja	;
+	vermelho_nox		->  vermelho.
+
+fuzzy_matrix so2_rules
+	so2				->  color	;
+
+	verde_so2			->  verde	;
+	amarelo_so2			->  amarelo	;
+	laranja_so2			->  laranja	;
+	vermelho_so2		->  vermelho.
+
+fuzzy_matrix co_rules
+	co				->  color	;
+	verde_co			->  verde	;
+	amarelo_co			->  amarelo	;
+	laranja_co			->  laranja	;
+	vermelho_co			->  vermelho.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Propagação dos valores fuzzy  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%example: get_risk(12, 30, 20, 1, 1, 1,  30, 30, 1, 1, Risk).
-relation get_risk(TempMin, TempMax, O3, Co, So2, Nox,  No, P10, ChuvaMax, ChuvaTotal,  Risk)
+%example: get_risk(26, 19, 26, 19, 100, 30,  30, 30, 1, 1, Risk).
+relation get_risk(TempMax, TempMin, TempMaxMedia, TempMinMedia, ChuvaTotal,P10, No, Nox, So2, Co, Risk)
 if reset all fuzzy values
 and fuzzify the tempMin from TempMin
 and fuzzify the tempMax from TempMax
-and fuzzify the o3 from O3
-and fuzzify the co from Co
-and fuzzify the so2 from So2
-and fuzzify the nox from Nox
-and fuzzify the no from No
-and fuzzify the p10 from P10
-and fuzzify the chuvaMax from ChuvaMax
+and fuzzify the tempMinMedia from TempMinMedia
+and fuzzify the tempMaxMedia from TempMaxMedia
 and fuzzify the chuvaTotal from ChuvaTotal
-and propagate { tempMin_rules, tempMax_rules, o3_rules, 
-			co_rules, so2_rules, nox_rules, 
-			no_rules,
- 			p10_rules,
-			 chuvaMax_rules, chuvaTotal_rules
-} fuzzy rules
+and fuzzify the p10 from P10
+and fuzzify the no from No
+and fuzzify the nox from Nox
+and fuzzify the so2 from So2
+and fuzzify the co from Co
+and propagate { tempMin_rules, tempMax_rules, tempMinMedia_rules, tempMaxMedia_rules,
+			co_rules, so2_rules, nox_rules, no_rules, p10_rules, chuvaTotal_rules } fuzzy rules
 and defuzzify the color to Risk.
 
 
@@ -280,7 +211,7 @@ and defuzzify the color to Risk.
 action run
    	do  restart
 	and ask_for_variables
-    	and get_risk(12, 30, 20, 1, 1, 1,  30, 30, 1, 1, Risk)
+    	and checkValue(Risk)
    	and write(Risk).
 
 action ask_for_variables
@@ -288,28 +219,28 @@ action ask_for_variables
 	and Risk is a new risk
 	and the tempMin of Risk becomes ask_TempMin
 	and the tempMax of Risk becomes ask_TempMax
-	and the o3 of Risk becomes ask_O3
+	and the tempMinMedia of Risk becomes ask_TempMinMedia
+	and the tempMaxMedia of Risk becomes ask_TempMaxMedia
 	and the co of Risk becomes ask_Co
 	and the so2 of Risk becomes ask_So2
 	and the nox of Risk becomes ask_Nox
 	and the no of Risk becomes ask_No
 	and the p10 of Risk becomes ask_P10
-	and the chuvaMax of Risk becomes ask_ChuvaMax
 	and the chuvaTotal of Risk becomes ask_ChuvaTotal.
 
 action checkValue( Risk)
    	do  check that Risk is a  risk
-   	and check that the tempMin of Risk is TempMin
    	and check that the tempMax of Risk is TempMax
-   	and check that the o3 of Risk is O3
-   	and check that the co of Risk is Co
+   	and check that the tempMin of Risk is TempMin
+   	and check that the tempMaxMedia of Risk is TempMaxMedia
+   	and check that the tempMinMedia of Risk is TempMinMedia
+   	and check that the chuvaTotal of Risk is ChuvaTotal
+   	and check that the p10 of Risk is P10
+   	and check that the no of Risk is No
    	and check that the nox  of Risk is  Nox
 	and check that the so2 of Risk is  So2
-   	and check that the no of Risk is No
-   	and check that the p10 of Risk is P10
-   	and check that the chuvaMax of Risk is ChuvaMax
-   	and check that the chuvaTotal of Risk is ChuvaTotal
-   	and get_risk(( TempMin, TempMax, O3, Co, So2, Nox,  No, P10, ChuvaMax, ChuvaTotal,  Risk ) .
+   	and check that the co of Risk is Co
+   	and get_risk(TempMax, TempMin, TempMaxMedia, TempMinMedia, ChuvaTotal,P10, No, Nox, So2, Co, Risk) .
 
 do ensure_loaded( system( flint ) ).
 
@@ -318,7 +249,7 @@ do ensure_loaded( system( flint ) ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 group risk_questions
-	ask_TempMin, ask_TempMax, ask_O3, ask_Co, ask_So2, ask_Nox,  ask_No, ask_P10, ask_ChuvaMax, ask_ChuvaTotal.
+	ask_TempMax, ask_TempMin, ask_TempMaxMedia, ask_TempMinMedia, ask_ChuvaTotal, ask_P10, ask_No, ask_Nox, ask_So2, ask_Co.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % QUESTIONS  
@@ -332,8 +263,12 @@ question ask_TempMax
 'Qual a temperatura máxima do mês?' ;
 input number.
 
-question ask_O3
-'Qual o nível de O3 do mês?' ;
+question ask_TempMinMedia
+'Qual a média da temperatura mínima do mês?' ;
+input number.
+
+question ask_TempMaxMedia
+'Qual a média da temperatura máxima do mês?' ;
 input number.
 
 question ask_Co
@@ -354,10 +289,6 @@ input number.
 
 question ask_P10
 'Qual o nível de P10 do mês?' ;
-input number.
-
-question ask_ChuvaMax
-'Qual o nível de Chuva máxima do mês?' ;
 input number.
 
 question ask_ChuvaTotal
