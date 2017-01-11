@@ -152,7 +152,7 @@ fuzzy_variable color ;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 fuzzy_matrix tempMax_rules
-	rtempMax			->  color	;
+	tempMax			->  color	;
 
 	verde_tMax			->  verde	;
 	amarelo_tMax		->  amarelo	;
@@ -161,7 +161,7 @@ fuzzy_matrix tempMax_rules
 
 
 fuzzy_matrix tempMin_rules
-	rtempMin 			->  color	;
+	tempMin 			->  color	;
 
 	verde_tMin   		->  verde	;
 	amarelo_tMin   		->  amarelo	;
@@ -169,7 +169,7 @@ fuzzy_matrix tempMin_rules
 	vermelho_tMin   		->  vermelho.
 
 fuzzy_matrix tempMaxMedia_rules
-	rtempMaxMedia		->  color	;
+	tempMaxMedia		->  color	;
 
 	verde_tMaxMedia		->  verde	;
 	amarelo_tMaxMedia		->  amarelo	;
@@ -178,7 +178,7 @@ fuzzy_matrix tempMaxMedia_rules
 
 
 fuzzy_matrix tempMinMedia_rules
-	rtempMinMedia 		->  color	;
+	tempMinMedia 		->  color	;
 
 	verde_tMinMedia   	->  verde	;
 	amarelo_tMinMedia   	->  amarelo	;
@@ -186,7 +186,7 @@ fuzzy_matrix tempMinMedia_rules
 	vermelho_tMinMedia   	->  vermelho.
 
 fuzzy_matrix chuvaTotal_rules
-	rchuvaTotal			->  color	;
+	chuvaTotal			->  color	;
 
 	verde_chuvaTotal		->  verde	;
 	amarelo_chuvaTotal	->  amarelo	;
@@ -195,7 +195,7 @@ fuzzy_matrix chuvaTotal_rules
 
 
 fuzzy_matrix p10_rules
-	rp10				->  color	;
+	p10				->  color	;
 
 	verde_p10			->  verde	;
 	amarelo_p10			->  amarelo	;
@@ -203,7 +203,7 @@ fuzzy_matrix p10_rules
 	vermelho_p10		->  vermelho.
 
 fuzzy_matrix no_rules
-	rno				->  color	;
+	no				->  color	;
 
 	verde_no			->  verde	;
 	amarelo_no			->  amarelo	;
@@ -211,7 +211,7 @@ fuzzy_matrix no_rules
 	vermelho_no			->  vermelho.
 
 fuzzy_matrix nox_rules
-	rnox				->  color	;
+	nox				->  color	;
 
 	verde_nox			->  verde	;
 	amarelo_nox			->  amarelo	;
@@ -227,7 +227,7 @@ fuzzy_matrix so2_rules
 	vermelho_so2		->  vermelho.
 
 fuzzy_matrix co_rules
-	rco				->  color	;
+	co				->  color	;
 	verde_co			->  verde	;
 	amarelo_co			->  amarelo	;
 	laranja_co			->  laranja	;

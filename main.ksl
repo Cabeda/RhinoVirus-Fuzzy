@@ -253,8 +253,7 @@ and fuzzify the so2 from So2
 and fuzzify the co from Co
 and propagate { tempMin_rules, tempMax_rules, tempMinMedia_rules, tempMaxMedia_rules,
 			co_rules, so2_rules, nox_rules, no_rules, p10_rules, chuvaTotal_rules } fuzzy rules
-and defuzzify the color to Risk
-and write(Risk) and nl.
+and defuzzify the color to Risk.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -266,7 +265,8 @@ action run
    	do  restart
 	and ask_for_variables(Risk)
     	and checkValue(Risk, R)
-   	and write(R).
+   	and write(R)
+   	and nl.
 
 action ask_for_variables(Risk)
    	do ask risk_questions
