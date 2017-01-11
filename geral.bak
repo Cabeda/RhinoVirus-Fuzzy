@@ -14,7 +14,6 @@ and default vnox is 0
 and default vso2 is 0
 and default vco is 0.
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fuzzy Variables
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,44 +80,22 @@ fuzzy_variable chuvaTotal ;
        and shrinking .  
 
 fuzzy_variable p10 ;
-   ranges from 20 to  55 ; 
-   fuzzy_set verde_p10 is / shaped and linear at 43.13935794,  50.76052051 ; 
-   fuzzy_set amarelo_p10 is /\ shaped and linear at 34.42945787, 39.87314541, 45.31683296 ; 
-   fuzzy_set laranja_p10 is /\ shaped and linear at 28.98577, 34.42945787, 39.87314541 ; 
-   fuzzy_set vermelho_p10 is \ shaped and linear at 28.98577, 34.42945787 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
-
-fuzzy_variable no ;
-   ranges from -20 to  30 ; 
-   fuzzy_set verde_no is \ shaped and linear at  -18.57025824, -2.83907928 ; 
-   fuzzy_set amarelo_no is /\ shaped and linear at -7.33370184, 3.902854555, 15.13941095 ; 
-   fuzzy_set laranja_no is /\ shaped and linear at 3.902854555, 15.13941095, 26.37597 ; 
-   fuzzy_set vermelho_no is / shaped and linear at 15.13941095, 26.37597 ; 
-   defuzzify using 
-      all memberships
-       and mirror rule
-       and shrinking . 
-
-fuzzy_variable nox ;
-   ranges from -5 to  100 ; 
-   fuzzy_set verde_nox is \ shaped and linear at -1.49751375, 29.5424727 ; 
-   fuzzy_set amarelo_nox is /\ shaped and linear at 20.673905, 42.845324, 65.016743 ; 
-   fuzzy_set laranja_nox is /\ shaped and linear at 42.845324, 65.016743, 87.1882 ; 
-   fuzzy_set vermelho_nox is / shaped and linear at 65.016743, 87.1882  ; 
+   ranges from 30 to  86 ; 
+   fuzzy_set verde_p10 is / shaped and linear at 66.40320787,  85.58969271 ; 
+   fuzzy_set amarelo_p10 is /\ shaped and linear at 58.18042865, 71.8850607, 85.58969271 ; 
+   fuzzy_set laranja_p10 is /\ shaped and linear at 44.4757966, 58.18042865, 71.8850607 ; 
+   fuzzy_set vermelho_p10 is \ shaped and linear at 30.7712, 44.4757966 ; 
    defuzzify using 
       all memberships
        and mirror rule
        and shrinking . 
 
 fuzzy_variable so2 ;
-   ranges from 1 to  8 ; 
-   fuzzy_set verde_so2 is / shaped and linear at 5.05207594, 6.243684796 ; 
-   fuzzy_set amarelo_so2 is /\ shaped and linear at 3.6902372, 4.54138643, 5.3925356 ; 
-   fuzzy_set laranja_so2 is /\ shaped and linear at 2.83909, 3.6902372, 4.54138643 ; 
-   fuzzy_set vermelho_so2 is \ shaped and linear at 2.83909, 3.6902372 ; 
+   ranges from 4 to  10 ; 
+   fuzzy_set verde_so2 is / shaped and linear at 7.869653683, 9.874533969 ; 
+   fuzzy_set amarelo_so2 is /\ shaped and linear at 7.010419274, 8.44247662, 9.874533969 ; 
+   fuzzy_set laranja_so2 is /\ shaped and linear at 5.57836193, 7.010419274, 8.44247662 ; 
+   fuzzy_set vermelho_so2 is \ shaped and linear at 4.1463, 5.57836193 ; 
    defuzzify using 
       all memberships
        and mirror rule
@@ -126,10 +103,10 @@ fuzzy_variable so2 ;
 
 fuzzy_variable co ;
    ranges from -300 to  600 ; 
-   fuzzy_set verde_co is \ shaped and linear at -258.045849, 16.7756219 ; 
-   fuzzy_set amarelo_co is /\ shaped and linear at -61.744798, 134.556252, 330.8573 ; 
-   fuzzy_set laranja_co is /\ shaped and linear at 134.556252, 330.8573,  527.158 ; 
-   fuzzy_set vermelho_co is / shaped and linear at 330.8573,  527.158; 
+   fuzzy_set verde_co is \ shaped and linear at -212.7293873, -38.1249856 ; 
+   fuzzy_set amarelo_co is /\ shaped and linear at -212.7293873, -88.011958, 36.70547221 ; 
+   fuzzy_set laranja_co is /\ shaped and linear at -88.011958, 36.70547221,  161.422902 ; 
+   fuzzy_set vermelho_co is / shaped and linear at 161.422902,  286.14; 
    defuzzify using 
       all memberships
        and mirror rule
@@ -152,7 +129,7 @@ fuzzy_variable color ;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 fuzzy_matrix tempMax_rules
-	rtempMax			->  color	;
+	tempMax			->  color	;
 
 	verde_tMax			->  verde	;
 	amarelo_tMax		->  amarelo	;
@@ -161,7 +138,7 @@ fuzzy_matrix tempMax_rules
 
 
 fuzzy_matrix tempMin_rules
-	rtempMin 			->  color	;
+	tempMin 			->  color	;
 
 	verde_tMin   		->  verde	;
 	amarelo_tMin   		->  amarelo	;
@@ -169,7 +146,7 @@ fuzzy_matrix tempMin_rules
 	vermelho_tMin   		->  vermelho.
 
 fuzzy_matrix tempMaxMedia_rules
-	rtempMaxMedia		->  color	;
+	tempMaxMedia		->  color	;
 
 	verde_tMaxMedia		->  verde	;
 	amarelo_tMaxMedia		->  amarelo	;
@@ -178,7 +155,7 @@ fuzzy_matrix tempMaxMedia_rules
 
 
 fuzzy_matrix tempMinMedia_rules
-	rtempMinMedia 		->  color	;
+	tempMinMedia 		->  color	;
 
 	verde_tMinMedia   	->  verde	;
 	amarelo_tMinMedia   	->  amarelo	;
@@ -186,7 +163,7 @@ fuzzy_matrix tempMinMedia_rules
 	vermelho_tMinMedia   	->  vermelho.
 
 fuzzy_matrix chuvaTotal_rules
-	rchuvaTotal			->  color	;
+	chuvaTotal			->  color	;
 
 	verde_chuvaTotal		->  verde	;
 	amarelo_chuvaTotal	->  amarelo	;
@@ -195,28 +172,12 @@ fuzzy_matrix chuvaTotal_rules
 
 
 fuzzy_matrix p10_rules
-	rp10				->  color	;
+	p10				->  color	;
 
 	verde_p10			->  verde	;
 	amarelo_p10			->  amarelo	;
 	laranja_p10			->  laranja	;
 	vermelho_p10		->  vermelho.
-
-fuzzy_matrix no_rules
-	rno				->  color	;
-
-	verde_no			->  verde	;
-	amarelo_no			->  amarelo	;
-	laranja_no			->  laranja	;
-	vermelho_no			->  vermelho.
-
-fuzzy_matrix nox_rules
-	rnox				->  color	;
-
-	verde_nox			->  verde	;
-	amarelo_nox			->  amarelo	;
-	laranja_nox			->  laranja	;
-	vermelho_nox		->  vermelho.
 
 fuzzy_matrix so2_rules
 	so2				->  color	;
@@ -227,7 +188,7 @@ fuzzy_matrix so2_rules
 	vermelho_so2		->  vermelho.
 
 fuzzy_matrix co_rules
-	rco				->  color	;
+	co				->  color	;
 	verde_co			->  verde	;
 	amarelo_co			->  amarelo	;
 	laranja_co			->  laranja	;
@@ -247,14 +208,11 @@ and fuzzify the tempMinMedia from TempMinMedia
 and fuzzify the tempMaxMedia from TempMaxMedia
 and fuzzify the chuvaTotal from ChuvaTotal
 and fuzzify the p10 from P10
-and fuzzify the no from No
-and fuzzify the nox from Nox
 and fuzzify the so2 from So2
 and fuzzify the co from Co
 and propagate { tempMin_rules, tempMax_rules, tempMinMedia_rules, tempMaxMedia_rules,
-			co_rules, so2_rules, nox_rules, no_rules, p10_rules, chuvaTotal_rules } fuzzy rules
-and defuzzify the color to Risk
-and write(Risk) and nl.
+			co_rules, so2_rules, p10_rules, chuvaTotal_rules } fuzzy rules
+and defuzzify the color to Risks.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -348,4 +306,3 @@ input number.
 question ask_ChuvaTotal
 'Qual o nível de Chuva Totals do mês?' ;
 input number.
- 

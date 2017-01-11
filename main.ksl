@@ -3,16 +3,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 frame risk ;
-default tempMax is 0
-and default tempMin is 0
-and default tempMaxMedia is 0
-and default tempMinMedia is 0
-and default chuvaTotal is 0
-and default p10 is 0
-and default no is 0
-and default nox is 0
-and default so2 is 0
-and default co is 0.
+default vtempMax is 0
+and default vtempMin is 0
+and default vtempMaxMedia is 0
+and default vtempMinMedia is 0
+and default vchuvaTotal is 0
+and default vp10 is 0
+and default vno is 0
+and default vnox is 0
+and default vso2 is 0
+and default vco is 0.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,7 +253,8 @@ and fuzzify the so2 from So2
 and fuzzify the co from Co
 and propagate { tempMin_rules, tempMax_rules, tempMinMedia_rules, tempMaxMedia_rules,
 			co_rules, so2_rules, nox_rules, no_rules, p10_rules, chuvaTotal_rules } fuzzy rules
-and defuzzify the color to Risk.
+and defuzzify the color to Risk
+and write(Risk) and nl.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -263,37 +264,37 @@ and defuzzify the color to Risk.
 % O programa é iniciado por esta ação
 action run
    	do  restart
-	and ask_for_variables
-    	and checkValue(Risk)
-   	and write(Risk).
+	and ask_for_variables(Risk)
+    	and checkValue(Risk, R)
+   	and write(R).
 
-action ask_for_variables
+action ask_for_variables(Risk)
    	do ask risk_questions
 	and Risk is a new risk
-	and the tempMin of Risk becomes ask_TempMin
-	and the tempMax of Risk becomes ask_TempMax
-	and the tempMinMedia of Risk becomes ask_TempMinMedia
-	and the tempMaxMedia of Risk becomes ask_TempMaxMedia
-	and the co of Risk becomes ask_Co
-	and the so2 of Risk becomes ask_So2
-	and the nox of Risk becomes ask_Nox
-	and the no of Risk becomes ask_No
-	and the p10 of Risk becomes ask_P10
-	and the chuvaTotal of Risk becomes ask_ChuvaTotal.
+	and the vtempMin of Risk becomes ask_TempMin
+	and the vtempMax of Risk becomes ask_TempMax
+	and the vtempMinMedia of Risk becomes ask_TempMinMedia
+	and the vtempMaxMedia of Risk becomes ask_TempMaxMedia
+	and the vco of Risk becomes ask_Co
+	and the vso2 of Risk becomes ask_So2
+	and the vnox of Risk becomes ask_Nox
+	and the vno of Risk becomes ask_No
+	and the vp10 of Risk becomes ask_P10
+	and the vchuvaTotal of Risk becomes ask_ChuvaTotal.
 
-action checkValue( Risk)
-   	do  check that Risk is a  risk
-   	and check that the tempMax of Risk is TempMax
-   	and check that the tempMin of Risk is TempMin
-   	and check that the tempMaxMedia of Risk is TempMaxMedia
-   	and check that the tempMinMedia of Risk is TempMinMedia
-   	and check that the chuvaTotal of Risk is ChuvaTotal
-   	and check that the p10 of Risk is P10
-   	and check that the no of Risk is No
-   	and check that the nox  of Risk is  Nox
-	and check that the so2 of Risk is  So2
-   	and check that the co of Risk is Co
-   	and get_risk(TempMax, TempMin, TempMaxMedia, TempMinMedia, ChuvaTotal,P10, No, Nox, So2, Co, Risk) .
+action checkValue(Risk, R)
+   	do  check that Risk is a type of risk
+   	and check that the vtempMax of Risk is TempMax
+   	and check that the vtempMin of Risk is TempMin
+   	and check that the vtempMaxMedia of Risk is TempMaxMedia
+   	and check that the vtempMinMedia of Risk is TempMinMedia
+   	and check that the vchuvaTotal of Risk is ChuvaTotal
+   	and check that the vp10 of Risk is P10
+   	and check that the vno of Risk is No
+   	and check that the vnox  of Risk is  Nox
+	and check that the vso2 of Risk is  So2
+   	and check that the vco of Risk is Co
+   	and get_risk(TempMax, TempMin, TempMaxMedia, TempMinMedia, ChuvaTotal,P10, No, Nox, So2, Co, R).
 
 do ensure_loaded( system( flint ) ).
 
